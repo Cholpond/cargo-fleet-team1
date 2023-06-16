@@ -7,11 +7,8 @@ import Tabs from '@material-ui/core/Tabs';
 import Typography from '@material-ui/core/Typography';
 import clsx from 'clsx';
 import { motion } from 'framer-motion';
-import { useState } from 'react';
 import { Link } from 'react-router-dom';
-import Auth0RegisterTab from './tabs/Auth0RegisterTab';
 import FirebaseRegisterTab from './tabs/FirebaseRegisterTab';
-import JWTRegisterTab from './tabs/JWTRegisterTab';
 
 const useStyles = makeStyles(theme => ({
   root: {
@@ -33,12 +30,7 @@ const useStyles = makeStyles(theme => ({
 
 function Register() {
   const classes = useStyles();
-  const [selectedTab, setSelectedTab] = useState(0);
-
-  function handleTabChange(event, value) {
-    setSelectedTab(value);
-  }
-
+  
   return (
     <div
       className={clsx(classes.root, 'flex flex-col flex-auto items-center justify-center flex-shrink-0 p-16 md:p-24')}
@@ -52,7 +44,7 @@ function Register() {
           className={clsx(classes.leftSection, 'flex flex-col w-full max-w-sm items-center justify-center shadow-0')}
           square
         >
-          {/* <CardContent className="flex flex-col items-center justify-center w-full py-96 max-w-320"> */}
+
           <CardContent className="flex flex-col items-center justify-center w-full max-w-320">
             <motion.div initial={{ opacity: 0 }} animate={{ opacity: 1, transition: { delay: 0.2 } }}>
               <div className="flex items-center justif-center mb-32">
@@ -69,27 +61,14 @@ function Register() {
               </div>
             </motion.div>
 
-            <Tabs value={selectedTab} onChange={handleTabChange} variant="fullWidth" className="w-full mb-32">
-              <Tab
-                icon={<img className="h-40 p-4 bg-black rounded-12" src="assets/images/logos/jwt.svg" alt="firebase" />}
-                className="min-w-0"
-                label="JWT"
-              />
+            <Tabs variant="fullWidth" className="w-full mb-32">
               <Tab
                 icon={<img className="h-40" src="assets/images/logos/firebase.svg" alt="firebase" />}
                 className="min-w-0"
                 label="Firebase"
               />
-              <Tab
-                icon={<img className="h-40" src="assets/images/logos/auth0.svg" alt="auth0" />}
-                className="min-w-0"
-                label="Auth0"
-              />
             </Tabs>
-
-            {selectedTab === 0 && <JWTRegisterTab />}
-            {selectedTab === 1 && <FirebaseRegisterTab />}
-            {selectedTab === 2 && <Auth0RegisterTab />}
+            <FirebaseRegisterTab />
           </CardContent>
 
           <div className="flex flex-col items-center justify-center pb-32">
