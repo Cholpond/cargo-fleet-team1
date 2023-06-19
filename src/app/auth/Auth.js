@@ -106,7 +106,7 @@ class Auth extends Component {
 
       firebaseService.onAuthStateChanged(authUser => {
         if (authUser) {
-          this.props.showMessage({ message: 'Logging in with Firebasse' });
+          this.props.showMessage({ message: 'Logging in with Firebase' });
 
           /**
            * Retrieve user data from Firebase
