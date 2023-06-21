@@ -9,6 +9,9 @@ import { useEffect, useRef, useState } from 'react';
 import { Controller, useForm } from 'react-hook-form';
 import { useDispatch, useSelector } from 'react-redux';
 import * as yup from 'yup';
+import Checkbox from '@material-ui/core/Checkbox';
+import FormControlLabel from '@material-ui/core/FormControlLabel';
+
 
 /**
  * Form Validation Schema
@@ -20,14 +23,16 @@ const schema = yup.object().shape({
     .string()
     .required('Please enter your password.')
     .min(8, 'Password is too short - should be 8 chars minimum.'),
-  passwordConfirm: yup.string().oneOf([yup.ref('password'), null], 'Passwords must match')
+  passwordConfirm: yup.string().oneOf([yup.ref('password'), null], 'Passwords must match'),
+  termsAndConditions: yup.boolean().oneOf([true],'You must accept Terms and Conditions')
 });
 
 const defaultValues = {
   displayName: '',
   email: '',
   password: '',
-  passwordConfirm: ''
+  passwordConfirm: '',
+  termsAndConditions: false
 };
 
 function FirebaseRegisterTab(props) {
@@ -163,6 +168,23 @@ function FirebaseRegisterTab(props) {
             />
           )}
         />
+        <FormControlLabel
+          control={
+            <Controller
+              name="termsAndConditions"
+              control={control}
+              render={({ field }) => (
+                <Checkbox
+                  {...field}
+                  color="primary"
+                />
+               )}
+            />
+          }
+          label="I agree to the terms and conditions"
+          required
+        />
+        
 
         <Button
           type="submit"

@@ -47,12 +47,12 @@ function Register() {
 
           <CardContent className="flex flex-col items-center justify-center w-full max-w-320">
             <motion.div initial={{ opacity: 0 }} animate={{ opacity: 1, transition: { delay: 0.2 } }}>
-              <div className="flex items-center justif-center mb-32">
-                <img className="logo-icon w-48" src="assets/images/logos/fuse.svg" alt="logo" />
+              <div className="flex items-center justif-center mb-10">
+                <img className="logo-icon w-48" src="assets/images/logos/logo.png" alt="logo" />
                 <div className="border-l-1 mr-4 w-1 h-40" />
                 <div>
                   <Typography className="text-24 font-semibold logo-text" color="inherit">
-                    FUSE
+                    Cargo fleet
                   </Typography>
                   <Typography className="text-16 tracking-widest -mt-8 font-700" color="textSecondary">
                     REACT
@@ -61,13 +61,14 @@ function Register() {
               </div>
             </motion.div>
 
-            <Tabs variant="fullWidth" className="w-full mb-32">
+            {/* <Tabs variant="fullWidth" className="w-full mb-32">
               <Tab
                 icon={<img className="h-40" src="assets/images/logos/firebase.svg" alt="firebase" />}
                 className="min-w-0"
                 label="Firebase"
               />
-            </Tabs>
+            </Tabs> */}
+            <h1 className={clsx(classes.margin, 'my-10')}>Sign up page</h1>
             <FirebaseRegisterTab />
           </CardContent>
 
