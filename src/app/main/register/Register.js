@@ -47,12 +47,12 @@ function Register() {
 
           <CardContent className="flex flex-col items-center justify-center w-full max-w-320">
             <motion.div initial={{ opacity: 0 }} animate={{ opacity: 1, transition: { delay: 0.2 } }}>
-              <div className="flex items-center justif-center mb-32">
-                <img className="logo-icon w-48" src="assets/images/logos/fuse.svg" alt="logo" />
+              <div className="flex items-center justif-center mb-10">
+                <img className="logo-icon w-48" src="assets/images/logos/logo.png" alt="logo" />
                 <div className="border-l-1 mr-4 w-1 h-40" />
                 <div>
                   <Typography className="text-24 font-semibold logo-text" color="inherit">
-                    FUSE
+                    Cargo fleet
                   </Typography>
                   <Typography className="text-16 tracking-widest -mt-8 font-700" color="textSecondary">
                     REACT
@@ -61,13 +61,14 @@ function Register() {
               </div>
             </motion.div>
 
-            <Tabs variant="fullWidth" className="w-full mb-32">
+            {/* <Tabs variant="fullWidth" className="w-full mb-32">
               <Tab
                 icon={<img className="h-40" src="assets/images/logos/firebase.svg" alt="firebase" />}
                 className="min-w-0"
                 label="Firebase"
               />
-            </Tabs>
+            </Tabs> */}
+            <h1 className={clsx(classes.margin, 'my-10')}>Sign up page</h1>
             <FirebaseRegisterTab />
           </CardContent>
 
@@ -89,13 +90,17 @@ function Register() {
             <motion.div initial={{ opacity: 0, y: 40 }} animate={{ opacity: 1, y: 0, transition: { delay: 0.2 } }}>
               <Typography variant="h3" color="inherit" className="font-semibold leading-tight">
                 Welcome <br />
-                to the <br /> FUSE React!
+                to the <br /> Cargo Fleet!!!
               </Typography>
             </motion.div>
 
             <motion.div initial={{ opacity: 0 }} animate={{ opacity: 1, transition: { delay: 0.3 } }}>
               <Typography variant="subtitle1" color="inherit" className="mt-32">
-                Powerful and professional admin template for Web Applications, CRM, CMS, Admin Panels and more.
+                <ul>
+                  <li>CargoFleet is a software company which builds fleet management applications for truck companies.</li>
+                  <li>It is relatively new company, which was created by former truck drivers 4 years ago, it is based in IL.</li>
+                  <li>They saw the similar fleet management application for cars, but not many for trucks, so they decided to go for it.</li>
+                </ul>
               </Typography>
             </motion.div>
           </div>
