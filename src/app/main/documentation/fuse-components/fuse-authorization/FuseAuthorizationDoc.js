@@ -226,6 +226,7 @@ function FuseAuthorizationDoc() {
 					import {LoginConfig} from 'app/main/login/LoginConfig';
 					import {RegisterConfig} from 'app/main/register/RegisterConfig';
 					import {LogoutConfig} from 'app/main/logout/LogoutConfig';
+          import ForgotPasswordConfig from 'app/main/forgot-password/ForgotPasswordConfig';
 					import {CallbackConfig} from 'app/main/callback/CallbackConfig';
 					
 					const routeConfigs = [
@@ -239,6 +240,7 @@ function FuseAuthorizationDoc() {
 						RegisterConfig,
 						LogoutConfig,
 						CallbackConfig,
+            ForgotPasswordConfig
 					];
 					
 					const routes = [
@@ -281,6 +283,7 @@ function FuseAuthorizationDoc() {
 					import {LoginConfig} from 'app/main/login/LoginConfig';
 					import {RegisterConfig} from 'app/main/register/RegisterConfig';
 					import {LogoutConfig} from 'app/main/logout/LogoutConfig';
+          import ForgotPasswordConfig from 'app/main/forgot-password/ForgotPasswordConfig';
 					import {CallbackConfig} from 'app/main/callback/CallbackConfig';
 					
 					const routeConfigs = [
@@ -293,7 +296,8 @@ function FuseAuthorizationDoc() {
 						LoginConfig,
 						RegisterConfig,
 						LogoutConfig,
-						CallbackConfig
+						CallbackConfig,
+            ForgotPasswordConfig
 					];
 					
 					const routes = [

@@ -73,6 +73,9 @@ function Login() {
           </CardContent>
 
           <div className="flex flex-col items-center justify-center pb-32">
+            <Link className="font-normal" to="/forgot-password">
+                Forgot Password?
+              </Link>
             <div>
               <span className="font-normal mr-8">Don't have an account?</span>
               <Link className="font-normal" to="/register">
