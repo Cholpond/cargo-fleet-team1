@@ -9,6 +9,7 @@ import pagesConfigs from 'app/main/pages/pagesConfigs';
 import RegisterConfig from 'app/main/register/RegisterConfig';
 import UserInterfaceConfig from 'app/main/user-interface/UserInterfaceConfig';
 import { Redirect } from 'react-router-dom';
+import ForgotPasswordPageConfig from 'app/main/forgot-password/ForgotPasswordPageConfig';
 
 const routeConfigs = [
   ...appsConfigs,
@@ -20,7 +21,8 @@ const routeConfigs = [
   LoginConfig,
   RegisterConfig,
   LogoutConfig,
-  CallbackConfig
+  CallbackConfig,
+  ForgotPasswordPageConfig
 ];
 
 const routes = [

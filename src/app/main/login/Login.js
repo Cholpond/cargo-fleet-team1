@@ -10,7 +10,6 @@ import { motion } from 'framer-motion';
 import { Link } from 'react-router-dom';
 import FirebaseLoginTab from './tabs/FirebaseLoginTab';
 
-
 const useStyles = makeStyles(theme => ({
   root: {
     background: `linear-gradient(to right, ${theme.palette.primary.dark} 0%, ${darken(
@@ -69,10 +68,16 @@ function Login() {
               /> */}
             </Tabs>
 
-            <FirebaseLoginTab/>
+            <FirebaseLoginTab />
           </CardContent>
 
           <div className="flex flex-col items-center justify-center pb-32">
+            <div>
+              <Link className="font-normal" to="/forgot-password">
+                Forgot Password ?
+              </Link>
+            </div>
+
             <div>
               <span className="font-normal mr-8">Don't have an account?</span>
               <Link className="font-normal" to="/register">
