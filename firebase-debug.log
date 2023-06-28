@@ -1,0 +1,93 @@
+[debug] [2023-06-27T17:23:53.677Z] ----------------------------------------------------------------------
+[debug] [2023-06-27T17:23:53.679Z] Command:       /usr/local/bin/firebase /Users/aidaaitenova/.cache/firebase/tools/lib/node_modules/firebase-tools/lib/bin/firebase init emulators
+[debug] [2023-06-27T17:23:53.680Z] CLI Version:   12.4.0
+[debug] [2023-06-27T17:23:53.680Z] Platform:      darwin
+[debug] [2023-06-27T17:23:53.680Z] Node Version:  v16.16.0
+[debug] [2023-06-27T17:23:53.688Z] Time:          Tue Jun 27 2023 13:23:53 GMT-0400 (Eastern Daylight Time)
+[debug] [2023-06-27T17:23:53.689Z] ----------------------------------------------------------------------
+[debug] 
+[debug] [2023-06-27T17:23:53.798Z] > command requires scopes: ["email","openid","https://www.googleapis.com/auth/cloudplatformprojects.readonly","https://www.googleapis.com/auth/firebase","https://www.googleapis.com/auth/cloud-platform"]
+[debug] [2023-06-27T17:23:53.801Z] > authorizing via signed-in user (aida.aitenova@yahoo.com)
+[info] 
+     ######## #### ########  ######## ########     ###     ######  ########
+     ##        ##  ##     ## ##       ##     ##  ##   ##  ##       ##
+     ######    ##  ########  ######   ########  #########  ######  ######
+     ##        ##  ##    ##  ##       ##     ## ##     ##       ## ##
+     ##       #### ##     ## ######## ########  ##     ##  ######  ########
+
+You're about to initialize a Firebase project in this directory:
+
+  /Users/aidaaitenova/Dropbox/My Mac (Aidas-MacBook-Air.local)/Desktop/cargo-fleet-team1
+
+Before we get started, keep in mind:
+
+  * You are initializing within an existing Firebase project directory
+
+[info] 
+=== Project Setup
+[info] 
+[info] First, let's associate this project directory with a Firebase project.
+[info] You can create multiple project aliases by running firebase use --add, 
+[info] but for now we'll just set up a default project.
+[info] 
+[debug] [2023-06-27T17:23:53.809Z] Using project from CLI flag: cargo-fleet-team1
+[debug] [2023-06-27T17:23:53.814Z] >>> [apiv2][query] GET https://firebase.googleapis.com/v1beta1/projects/cargo-fleet-team1 [none]
+[debug] [2023-06-27T17:23:54.181Z] <<< [apiv2][status] GET https://firebase.googleapis.com/v1beta1/projects/cargo-fleet-team1 403
+[debug] [2023-06-27T17:23:54.185Z] <<< [apiv2][body] GET https://firebase.googleapis.com/v1beta1/projects/cargo-fleet-team1 {"error":{"code":403,"message":"The caller does not have permission","status":"PERMISSION_DENIED"}}
+[debug] [2023-06-27T17:23:54.186Z] HTTP Error: 403, The caller does not have permission
+[debug] [2023-06-27T17:23:54.385Z] FirebaseError: HTTP Error: 403, The caller does not have permission
+    at responseToError (/Users/aidaaitenova/.cache/firebase/tools/lib/node_modules/firebase-tools/lib/responseToError.js:49:12)
+    at RetryOperation._fn (/Users/aidaaitenova/.cache/firebase/tools/lib/node_modules/firebase-tools/lib/apiv2.js:288:77)
+    at processTicksAndRejections (node:internal/process/task_queues:96:5)
+[error] 
+[error] Error: Failed to get Firebase project cargo-fleet-team1. Please make sure the project exists and your account has permission to access it.
+[debug] [2023-06-27T17:24:45.556Z] ----------------------------------------------------------------------
+[debug] [2023-06-27T17:24:45.558Z] Command:       /usr/local/bin/firebase /Users/aidaaitenova/.cache/firebase/tools/lib/node_modules/firebase-tools/lib/bin/firebase emulators:start
+[debug] [2023-06-27T17:24:45.558Z] CLI Version:   12.4.0
+[debug] [2023-06-27T17:24:45.558Z] Platform:      darwin
+[debug] [2023-06-27T17:24:45.559Z] Node Version:  v16.16.0
+[debug] [2023-06-27T17:24:45.565Z] Time:          Tue Jun 27 2023 13:24:45 GMT-0400 (Eastern Daylight Time)
+[debug] [2023-06-27T17:24:45.566Z] ----------------------------------------------------------------------
+[debug] 
+[debug] [2023-06-27T17:24:45.690Z] > command requires scopes: ["email","openid","https://www.googleapis.com/auth/cloudplatformprojects.readonly","https://www.googleapis.com/auth/firebase","https://www.googleapis.com/auth/cloud-platform"]
+[debug] [2023-06-27T17:24:45.691Z] > authorizing via signed-in user (aida.aitenova@yahoo.com)
+[info] i  emulators: Starting emulators: hosting {"metadata":{"emulator":{"name":"hub"},"message":"Starting emulators: hosting"}}
+[debug] [2023-06-27T17:24:46.558Z] [logging] Logging Emulator only supports listening on one address (127.0.0.1). Not listening on ::1
+[warn] ⚠  hosting: Hosting Emulator unable to start on port 5000, starting on 5002 instead. {"metadata":{"emulator":{"name":"hosting"},"message":"Hosting Emulator unable to start on port 5000, starting on 5002 instead."}}
+[debug] [2023-06-27T17:24:46.561Z] [hosting] Hosting Emulator only supports listening on one address (127.0.0.1). Not listening on ::1
+[debug] [2023-06-27T17:24:46.562Z] assigned listening specs for emulators {"user":{"hub":[{"address":"127.0.0.1","family":"IPv4","port":4400},{"address":"::1","family":"IPv6","port":4400}],"logging":[{"address":"127.0.0.1","family":"IPv4","port":4500}],"hosting":[{"address":"127.0.0.1","family":"IPv4","port":5002}]},"metadata":{"message":"assigned listening specs for emulators"}}
+[debug] [2023-06-27T17:24:46.588Z] [hub] writing locator at /var/folders/yb/1xq4nf6x6mn6st06350ld6sm0000gn/T/hub-cargo-fleet-team1.json
+[debug] [2023-06-27T17:24:46.640Z] >>> [apiv2][query] GET https://firebasehosting.googleapis.com/v1beta1/projects/cargo-fleet-team1/sites 
+[debug] [2023-06-27T17:24:47.162Z] <<< [apiv2][status] GET https://firebasehosting.googleapis.com/v1beta1/projects/cargo-fleet-team1/sites 403
+[debug] [2023-06-27T17:24:47.166Z] <<< [apiv2][body] GET https://firebasehosting.googleapis.com/v1beta1/projects/cargo-fleet-team1/sites {"error":{"code":403,"message":"Permission 'firebasehosting.sites.get' denied on resource 'projects/cargo-fleet-team1' (or it may not exist)","status":"PERMISSION_DENIED"}}
+[debug] [2023-06-27T17:24:47.168Z] Failed to list hosting sites
+[debug] HTTP Error: 403, Permission 'firebasehosting.sites.get' denied on resource 'projects/cargo-fleet-team1' (or it may not exist)
+[debug] [2023-06-27T17:24:47.169Z] >>> [apiv2][query] GET https://firebase.googleapis.com/v1beta1/projects/cargo-fleet-team1/webApps/-/config [none]
+[debug] [2023-06-27T17:24:47.479Z] <<< [apiv2][status] GET https://firebase.googleapis.com/v1beta1/projects/cargo-fleet-team1/webApps/-/config 403
+[debug] [2023-06-27T17:24:47.480Z] <<< [apiv2][body] GET https://firebase.googleapis.com/v1beta1/projects/cargo-fleet-team1/webApps/-/config {"error":{"code":403,"message":"The caller does not have permission","status":"PERMISSION_DENIED"}}
+[debug] [2023-06-27T17:24:47.480Z] fetchWebSetup error: FirebaseError: HTTP Error: 403, The caller does not have permission
+[warn] ⚠  hosting: Authentication error when trying to fetch your current web app configuration, have you run firebase login? 
+[warn] ⚠  hosting: Could not fetch web app configuration and there is no cached configuration on this machine. Check your internet connection and make sure you are authenticated. To continue, you must call firebase.initializeApp({...}) in your code before using Firebase. 
+[debug] [2023-06-27T17:24:47.488Z] >>> [apiv2][query] GET https://firebase.googleapis.com/v1beta1/projects/cargo-fleet-team1 [none]
+[debug] [2023-06-27T17:24:47.781Z] <<< [apiv2][status] GET https://firebase.googleapis.com/v1beta1/projects/cargo-fleet-team1 403
+[debug] [2023-06-27T17:24:47.782Z] <<< [apiv2][body] GET https://firebase.googleapis.com/v1beta1/projects/cargo-fleet-team1 {"error":{"code":403,"message":"The caller does not have permission","status":"PERMISSION_DENIED"}}
+[debug] [2023-06-27T17:24:47.782Z] HTTP Error: 403, The caller does not have permission
+[debug] [2023-06-27T17:24:47.786Z] Specified "public" directory "build" does not exist; Deploy to Hosting site "cargo-fleet-team1" may fail or be empty.
+[info] i  hosting[cargo-fleet-team1]: Serving hosting files from: build {"metadata":{"emulator":{"name":"hosting"},"message":"Serving hosting files from: \u001b[1mbuild\u001b[22m"}}
+[info] ✔  hosting[cargo-fleet-team1]: Local server: http://127.0.0.1:5002 {"metadata":{"emulator":{"name":"hosting"},"message":"Local server: \u001b[4m\u001b[1mhttp://127.0.0.1:5002\u001b[22m\u001b[24m"}}
+[warn] ⚠  emulators: The Emulator UI is not starting, either because none of the emulated products have an interaction layer in Emulator UI or it cannot determine the Project ID. Pass the --project flag to specify a project. {"metadata":{"emulator":{"name":"hub"},"message":"The Emulator UI is not starting, either because none of the emulated products have an interaction layer in Emulator UI or it cannot determine the Project ID. Pass the --project flag to specify a project."}}
+[info] 
+┌─────────────────────────────────────────────────────────────┐
+│ ✔  All emulators ready! It is now safe to connect your app. │
+└─────────────────────────────────────────────────────────────┘
+
+┌──────────┬────────────────┐
+│ Emulator │ Host:Port      │
+├──────────┼────────────────┤
+│ Hosting  │ 127.0.0.1:5002 │
+└──────────┴────────────────┘
+  Emulator Hub running at 127.0.0.1:4400
+  Other reserved ports: 4500
+
+Issues? Report them at https://github.com/firebase/firebase-tools/issues and attach the *-debug.log files.
+ 
