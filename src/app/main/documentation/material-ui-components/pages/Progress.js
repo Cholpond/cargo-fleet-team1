@@ -247,7 +247,7 @@ function Progress(props) {
       </Typography>
       <Typography className="mb-16" component="div">
         {' '}
-        src="/material-ui-static/images/progress/heavy-load.gif" alt="heavy load/>
+        src="/material-ui-static/images/progress/heavy-load.gif" alt="heavy load
       </Typography>
       <Typography className="mb-16" component="div">
         When it&#39;s not possible, you can leverage the <code>{`disableShrink`}</code> property to mitigate the issue.

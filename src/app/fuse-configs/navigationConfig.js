@@ -50,7 +50,16 @@ const navigationConfig = [
         type: 'item',
         icon: 'account_box',
         url: '/apps/vehicles/all'
-      }
+      },
+      {
+        id: 'issues',
+        title: 'Issues',
+        translate: 'ISSUES',
+        type: 'item',
+        icon: 'announcement',
+        url: '/apps/issues/all'
+      },
+
       // {
       //   id: 'chat',
       //   title: 'Chat',
