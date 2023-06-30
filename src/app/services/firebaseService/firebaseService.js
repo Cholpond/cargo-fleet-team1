@@ -3,6 +3,9 @@ import firebase from 'firebase/app';
 import 'firebase/auth';
 import 'firebase/database';
 import config from './firebaseServiceConfig';
+// import { sendPasswordResetEmail, confirmThePasswordReset } from 'firebase';
+// import { connectAuthEmulator, sendPasswordResetEmail, confirmPasswordReset } from 'firebase/auth';
+import sendPasswordResetEmail from 'firebase/auth';
 
 class FirebaseService {
   init(success) {
@@ -37,6 +40,12 @@ class FirebaseService {
         });
     });
   };
+  passwordReset = email => {
+    return this.auth.sendPasswordResetEmail(email);
+  };
+  // passwordReset = email => {
+  //   return firebase.auth().sendPasswordResetEmail(email);
+  // };
 
   updateUserData = user => {
     if (!firebase.apps.length) {
