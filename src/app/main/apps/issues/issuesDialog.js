@@ -312,20 +312,8 @@ import {
               )}
             />
   
-            <Controller
-              control={control}
-              name="license_class"
-              render={({ field }) => (
-                <TextField
-                  {...field}
-                  className="mb-24"
-                  label="license_class"
-                  id="license_class"
-                  variant="outlined"
-                  fullWidth
-                />
-              )}
-            />
+
+            
   
             <Controller
               control={control}

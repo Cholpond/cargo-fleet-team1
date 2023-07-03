@@ -5,7 +5,7 @@ import axios from 'axios';
 
 export function getissues(page) {
   return createAsyncThunk('listissuesApp/issues/getissues', async () => {
-    const response = await axios.get(`https://cargofleet-api.fly.dev/team2/api/issues?page=${page}`);
+    const response = await axios.get(`https://cargofleet-api.fly.dev/team1/api/issues?page=${page}`);
     return response.data;
   });
 }
@@ -16,7 +16,7 @@ export const addNewissue = createAsyncThunk(
     // delete issue.id;
 
     console.log(issue);
-    const response = await axios.post('https://cargofleet-api.fly.dev/team2/api/issues', issue);
+    const response = await axios.post('https://cargofleet-api.fly.dev/team1/api/issues', issue);
     const data = await response.data;
 
     dispatch(getissues(1));
@@ -28,7 +28,7 @@ export const addNewissue = createAsyncThunk(
 export const updateIssue = createAsyncThunk(
   'listissuesApp/issues/updateIssue',
   async (issue, { dispatch, getState }) => {
-    const response = await axios.put(`https://cargofleet-api.fly.dev/team2/api/issues/${issue.id}`, issue);
+    const response = await axios.put(`https://cargofleet-api.fly.dev/team1/api/issues/${issue.id}`, issue);
     const data = await response.data;
 
     dispatch(getissues(1));
@@ -39,7 +39,7 @@ export const updateIssue = createAsyncThunk(
 export const removeissue = createAsyncThunk(
   'listissuesApp/issues//removeissue',
   async (contactId, { dispatch, getState }) => {
-    await axios.delete(`https://cargofleet-api.fly.dev/team2/api/issues/${contactId}`);
+    await axios.delete(`https://cargofleet-api.fly.dev/team1/api/issues/${contactId}`);
 
     return contactId;
   }

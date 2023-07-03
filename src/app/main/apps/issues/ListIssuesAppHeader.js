@@ -13,7 +13,7 @@ const useStyles = makeStyles(() => ({
   }
 }));
 
-//2 for Header
+
 function ListissuesAppHeader() {
   const user = useSelector(({ auth }) => auth.user);
 

@@ -6,7 +6,7 @@ const useStyles = makeStyles(() => ({
   search: {
     display: 'flex',
 
-    // justifyContent: 'center',
+    
     justifyContent: 'space-between',
     padding: '25px 50px 10px 50px'
   },

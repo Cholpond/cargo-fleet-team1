@@ -149,7 +149,7 @@ function HomeTab() {
                 {drivers ? drivers.archived : 0}
               </Typography>
               <Typography variant="h6" gutterBottom>
-                archived
+                ARCHIVED
               </Typography>
             </div>
           </div>

@@ -58,7 +58,7 @@ const navigationConfig = [
         type: 'item',
         icon: 'announcement',
         url: '/apps/issues/all'
-      },
+      }
 
       // {
       //   id: 'chat',

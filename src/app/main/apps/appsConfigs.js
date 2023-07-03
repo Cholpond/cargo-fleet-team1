@@ -8,6 +8,12 @@ import ListIssuesConfigApp from './issues/ListIssuesConfigApp';
 
 
 
-const appsConfigs = [ProjectDashboardAppConfig, MailAppConfig, ContactsAppConfig, CalendarAppConfig, ChatAppConfig, ListIssuesConfigApp];
+const appsConfigs = [
+    ProjectDashboardAppConfig, 
+    MailAppConfig, 
+    ContactsAppConfig, 
+    CalendarAppConfig, 
+    ChatAppConfig, 
+    ListIssuesConfigApp];
 
 export default appsConfigs;

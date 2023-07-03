@@ -1,3 +1,4 @@
+
 import { lazy } from 'react';
 
 const ListissuesConfigApp = {
