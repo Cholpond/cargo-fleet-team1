@@ -50,7 +50,16 @@ const navigationConfig = [
         type: 'item',
         icon: 'account_box',
         url: '/apps/vehicles/all'
+      },
+      {
+        id: 'drivers',
+        title: 'Drivers',
+        translate: 'DRIVERS',
+        type: 'item',
+        icon: 'account_box',
+        url: '/apps/drivers/all'
       }
+
       // {
       //   id: 'chat',
       //   title: 'Chat',
