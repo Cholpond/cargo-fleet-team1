@@ -52,12 +52,12 @@ const navigationConfig = [
         url: '/apps/vehicles/all'
       },
       {
-        id: 'drivers',
-        title: 'Drivers',
-        translate: 'DRIVERS',
+        id: 'issues',
+        title: 'Issues',
+        translate: 'ISSUES',
         type: 'item',
-        icon: 'account_box',
-        url: '/apps/drivers/all'
+        icon: 'announcement',
+        url: '/apps/issues/all'
       }
 
       // {
