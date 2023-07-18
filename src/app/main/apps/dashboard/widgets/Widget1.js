@@ -12,6 +12,10 @@ function Widget1(props) {
     setCurrentRange(ev.target.value);
   }
 
+  if (!props.widget || !props.widget.ranges) {
+    return null; 
+  }
+
   return (
     <Paper className="w-full rounded-20 shadow flex flex-col justify-start">
       <div className="flex items-center justify-between px-4 pt-8">
@@ -45,12 +49,14 @@ function Widget1(props) {
           {props.widget.data.count[currentRange]}
         </Typography>
       </div>
-      {/* <Typography className="p-20 pt-0 h-56 flex justify-center items-end text-13 font-medium" color="textSecondary">
+       {/*<Typography className="p-20 pt-0 h-56 flex justify-center items-end text-13 font-medium" color="textSecondary">
         <span className="truncate">{props.widget.data.extra.name}</span>:
         <b className="px-8">{props.widget.data.extra.count[currentRange]}</b>
-      </Typography> */}
+        </Typography> 
+        */}
     </Paper>
   );
 }
+
 
 export default memo(Widget1);

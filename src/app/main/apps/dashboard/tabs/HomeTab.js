@@ -11,6 +11,20 @@ import Typography from '@material-ui/core/Typography';
 import Toolbar from '@material-ui/core/Toolbar';
 import { AppBar } from '@material-ui/core';
 import { getdashBoard } from '../store/dashBoardSlice';
+import Widget1 from '../widgets/Widget1';
+import Widget2 from '../widgets/Widget2';
+import Widget3 from '../widgets/Widget3';
+import Widget4 from '../widgets/Widget4';
+import Widget5 from '../widgets/Widget5';
+import Widget6 from '../widgets/Widget6';
+import Widget7 from '../widgets/Widget7';
+import Widget8 from '../widgets/Widget8';
+import Widget9 from '../widgets/Widget9';
+import Widget10 from '../widgets/Widget10';
+import Widget11 from '../widgets/Widget11';
+import Widget12 from '../widgets/Widget12';
+import { selectWidgets } from '../store/widgetsSlice';
+
 
 const useStyles = makeStyles({
   box: {
@@ -22,24 +36,30 @@ function HomeTab() {
   // const dashboard = useSelector(selectDashBoard);
   // console.log(dashboard);
   const dispatch = useDispatch();
-  useEffect(() => {
-    dispatch(getdashBoard());
-  }, [dispatch]);
   const drivers = useSelector(state => state.projectDashboardApp.dashboard.drivers);
   const issues = useSelector(state => state.projectDashboardApp.dashboard.issues);
   const vehicles = useSelector(state => state.projectDashboardApp.dashboard.vehicles);
+  const widgets = useSelector(selectWidgets);
 
-  console.log('afgsdhsjfklgdhb;nfdlksJNBADNFSMG,D', vehicles);
+  const classes = useStyles();
+
+  const container = {
+    show: {
+      transition: {
+        staggerChildren: 0.1
+      }
+    }
+  };
+  
+  
   const item = {
     hidden: { opacity: 0, y: 20 },
     show: { opacity: 1, y: 0 }
   };
 
   useEffect(() => {
-    console.log('dash render');
-    // console.log(dashboard);
-    // selectDashboard();
-  });
+    dispatch(getdashBoard());
+  }, [dispatch]);
 
   return (
     <div className="grid-container">
@@ -155,28 +175,7 @@ function HomeTab() {
           </div>
         </Link>
       </Card>
-    </div>
-  );
-}
-
-export default HomeTab;
-/*function HomeTab() {
-  const widgets = useSelector(selectWidgets);
-
-  const container = {
-    show: {
-      transition: {
-        staggerChildren: 0.1
-      }
-    }
-  };
-
-  const item = {
-    hidden: { opacity: 0, y: 20 },
-    show: { opacity: 1, y: 0 }
-  };
-
-  return (
+  
     <motion.div className="flex flex-wrap" variants={container} initial="hidden" animate="show">
       <motion.div variants={item} className="widget flex w-full sm:w-1/2 md:w-1/4 p-12">
         <Widget1 widget={widgets.widget1} />
@@ -200,7 +199,8 @@ export default HomeTab;
         <Widget12 widget={widgets.widget12} />
       </motion.div>
     </motion.div>
+  </div>
   );
 }
 
-export default HomeTab;*/
+export default HomeTab;

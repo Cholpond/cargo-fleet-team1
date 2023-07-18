@@ -45,10 +45,11 @@ function Widget2(props) {
           {props.widget.data.count[currentRange]}
         </Typography>
       </div>
-      {/* <Typography className="p-20 pt-0 h-56 flex justify-center items-end text-13 font-medium" color="textSecondary">
+      {/*<Typography className="p-20 pt-0 h-56 flex justify-center items-end text-13 font-medium" color="textSecondary">
         <span className="truncate">{props.widget.data.extra.name}</span>:
         <b className="px-8">{props.widget.data.extra.count[currentRange]}</b>
-      </Typography> */}
+      </Typography> 
+      */}
     </Paper>
   );
 }

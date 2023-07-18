@@ -26,7 +26,6 @@ const useStyles = makeStyles(theme => ({
 function ProjectDashboardApp(props) {
   const dispatch = useDispatch();
   const widgets = useSelector(selectWidgets);
-
   const classes = useStyles(props);
   const pageLayout = useRef(null);
   const [tabValue, setTabValue] = useState(0);
@@ -82,6 +81,7 @@ function ProjectDashboardApp(props) {
       rightSidebarContent={<ProjectDashboardAppSidebar />}
       ref={pageLayout}
     />
+
   );
 }
 
