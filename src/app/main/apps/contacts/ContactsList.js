@@ -8,8 +8,8 @@ import { useMemo, useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import ContactsMultiSelectMenu from './ContactsMultiSelectMenu';
 import ContactsTable from './ContactsTable';
-// import { openEditContactDialog, removeContact, toggleStarredContact, selectContacts } from './store/contactsSlice';
-import { openEditContactDialog, selectContacts } from './store/contactsSlice';
+import { openEditContactDialog, removeContact, toggleStarredContact, selectContacts } from './store/contactsSlice';
+// import { openEditContactDialog, selectContacts } from './store/contactsSlice';
 
 const formatData = vehicles =>
   vehicles.map(vehicle => {
@@ -18,7 +18,7 @@ const formatData = vehicles =>
       ...vehicle,
       isAssigned: vehicle.isAssigned ? 'YES' : 'NO',
       totalCost,
-      millage: vehicle.millage.toLocaleString()
+      // millage: vehicle.millage.toLocaleString()
     };
   });
 
@@ -67,6 +67,16 @@ function ContactsList(props) {
       {
         Header: 'Plate Number',
         accessor: 'plateNumber',
+        sortable: true
+      },
+      {
+        Header: 'Driver name',
+        accessor: 'driver.first_name',
+        sortable: true
+      },
+      {
+        Header: 'Driver last name',
+        accessor: 'driver.last_name',
         sortable: true
       },
       {
