@@ -4,7 +4,7 @@ import Typography from '@material-ui/core/Typography';
 import { useSelector } from 'react-redux';
 import _ from '@lodash';
 import { makeStyles } from '@material-ui/core';
-import ListdriverSide from './ListDriversSide';
+import ListDriverSide from './ListDriversSide';
 
 const useStyles = makeStyles(() => ({
   header: {
@@ -15,7 +15,7 @@ const useStyles = makeStyles(() => ({
 }));
 
 
-function ListdriversAppHeader() {
+function ListDriversAppHeader() {
   const user = useSelector(({ auth }) => auth.user);
 
   // 1 header style
@@ -38,9 +38,9 @@ function ListdriversAppHeader() {
           </div>
         </div>
       </div>
-      <ListdriverSide />
+      <ListDriverSide />
     </>
   );
 }
 
-export default ListdriversAppHeader;
+export default ListDriversAppHeader;

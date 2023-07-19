@@ -23,6 +23,7 @@ export const addNewissue = createAsyncThunk(
 
     return data;
   }
+  
 );
 
 export const updateIssue = createAsyncThunk(

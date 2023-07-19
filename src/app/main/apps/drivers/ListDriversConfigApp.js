@@ -2,7 +2,7 @@
 
 import { lazy } from 'react';
 
-const ListdriversConfigApp = {
+const ListDriversConfigApp = {
   settings: {
     layout: {
       config: {}
@@ -16,4 +16,4 @@ const ListdriversConfigApp = {
   ]
 };
 
-export default ListdriversConfigApp;
+export default ListDriversConfigApp;

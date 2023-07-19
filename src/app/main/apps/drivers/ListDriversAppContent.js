@@ -5,8 +5,8 @@ import Pagination from '@material-ui/lab/Pagination';
 import { Typography } from '@material-ui/core';
 import { useDispatch, useSelector } from 'react-redux';
 import FuseUtils from '@fuse/utils/FuseUtils';
-import { getdrivers, selectdrivers } from './store/driversSlice';
-import ListdriversAppCard from './ListdriverAppCard';
+import { getDrivers, selectDrivers } from './store/driversSlice';
+import ListDriversAppCard from './ListDriversAppCard';
 
 const useStyles = makeStyles({
   issue: {
@@ -29,13 +29,13 @@ const useStyles = makeStyles({
 });
 
 //6 itterate issues from inside store issues.map
-function ListdriversAppContent() {
+function ListDriversAppContent() {
   const classes = useStyles();
   const dispatch = useDispatch();
   const [page, setPage] = useState(1);
-  const drivers = useSelector(selectdrivers);
+  const drivers = useSelector(selectDrivers);
   const [filteredData, setFilteredData] = useState(null);
-  const searchText = useSelector(({ listdriversApp }) => listdriversApp.drivers.searchText);
+  const searchText = useSelector(({ listDriversApp }) => listDriversApp.drivers.searchText);
 
   function handleChangePage(a, number) {
     setPage(number);
@@ -55,7 +55,7 @@ function ListdriversAppContent() {
   }, [drivers, searchText]);
 
   useEffect(() => {
-    dispatch(getdrivers(page)());
+    dispatch(getDrivers(page)());
   }, [dispatch, page]);
 
   if (filteredData?.length === 0) {
@@ -73,7 +73,7 @@ function ListdriversAppContent() {
     <hr />
     <div className={classes.content}>
       {filteredData?.map(eachDriver => (
-        <ListdriversAppCard driver={eachDriver} key={eachDriver.id} />
+        <ListDriversAppCard driver={eachDriver} key={eachDriver.id} />
       ))}
     </div>
 
@@ -88,4 +88,4 @@ function ListdriversAppContent() {
     </div>
   );
 }
-export default ListdriversAppContent;
+export default ListDriversAppContent;

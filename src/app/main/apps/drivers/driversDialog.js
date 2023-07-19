@@ -68,7 +68,7 @@ import {
   
     const classes = useStyles();
     const dispatch = useDispatch();
-    const driverDialog = useSelector(store => store.listdriversApp.drivers.driverDialog);
+    const driverDialog = useSelector(store => store.listDriversApp.drivers.driverDialog);
   
     const { isValid, dirtyFields, errors } = formState;
   
@@ -97,7 +97,7 @@ import {
   
     function submit(data) {
       if (driverDialog?.type === 'new') {
-        dispatch(addNewDriver(data));
+       'dispatch(addNewDriver(data));'
       } else {
         dispatch(updateDriver({ ...driverDialog?.data, ...data }));
       }

@@ -2,23 +2,28 @@
 import { createSlice, createAsyncThunk, createEntityAdapter } from '@reduxjs/toolkit';
 import axios from 'axios';
 
-export const getdrivers = 
-    createAsyncThunk('listdriversApp/drivers/getdrivers', async () => {
+
+export const getDrivers = createAsyncThunk('listdriversApp/drivers/getDrivers', 
+    async () => {
     const response = await axios.get(`https://cargofleet-api.fly.dev/team1/api/drivers`);
+    const data = await response.data
     return response.data;
   });
-
+  
+  console.log(getDrivers())
+  
+ 
 
 export const addNewDriver = createAsyncThunk(
-  'listdriversApp/drivers/addNewDriver',
+  'listDriversApp/drivers/addNewDriver',
   async (driver, { dispatch, getState }) => {
     // delete issue.id;
 
-    console.log(driver);
+    //console.log(driver);
     const response = await axios.post('https://cargofleet-api.fly.dev/team1/api/drivers', driver);
     const data = await response.data;
 
-    dispatch(getdrivers(1));
+    dispatch(getDrivers());
 
     return data;
   }
@@ -29,14 +34,16 @@ export const updateDriver = createAsyncThunk(
   async (driver, { dispatch, getState }) => {
     const response = await axios.put(`https://cargofleet-api.fly.dev/team1/api/drivers/${driver.id}`, driver);
     const data = await response.data;
-
-    // dispatch(getdrivers(1));
+     //dispatch(getdrivers());
     return data;
+    //console.log(driver),
+    //console.log(data)
   }
+
 );
 
-export const removedriver = createAsyncThunk(
-  'listdriversApp/drivers//removedriver',
+export const removeDriver = createAsyncThunk(
+  'listdriversApp/drivers/removeDriver',
   async (contactId, { dispatch, getState }) => {
     await axios.delete(`https://cargofleet-api.fly.dev/team1/api/drivers/${contactId}`);
 
@@ -45,11 +52,11 @@ export const removedriver = createAsyncThunk(
 );
 
 const driversAdapter = createEntityAdapter({});
-export const { selectAll: selectdrivers, selectById: selectdriversById } = driversAdapter.getSelectors(
-  state => state.listdriversApp.drivers
+export const { selectAll: selectDrivers, selectById: selectDriversById } = driversAdapter.getSelectors(
+  state => state.listDriversApp.drivers
 );
-const driverSlice = createSlice({
-  name: 'listdriversApp/drivers',
+const driversSlice = createSlice({
+  name: 'listDriversApp/drivers',
   initialState: driversAdapter.getInitialState({
     searchText: '',
     routeParams: {},
@@ -63,7 +70,7 @@ const driverSlice = createSlice({
   }),
 
   reducers: {
-    setdriverSearchText: {
+    setDriverSearchText: {
       reducer: (state, action) => {
         state.searchText = action.payload;
       },
@@ -98,16 +105,16 @@ const driverSlice = createSlice({
     }
   },
   extraReducers: {
-    [getdrivers.fulfilled]: (state, action) => {
+    [updateDriver.fulfilled]: driversAdapter.upsertOne,
+    [getDrivers.fulfilled]: (state, action) => {
       const { data, routeParams } = action.payload;
       driversAdapter.setAll(state, data);
     },
-    [updateDriver.fulfilled]: driversAdapter.upsertOne,
-    [removedriver.fulfilled]: (state, action) => driversAdapter.removeOne(state, action.payload),
+    [removeDriver.fulfilled]: (state, action) => driversAdapter.removeOne(state, action.payload),
     [addNewDriver.fulfilled]: driversAdapter.addOne
   }
 });
 
-export const { setdriverSearchText, openNewDriverDialog, closeNewDriverDialog, openEditDriverDialog } = driverSlice.actions;
+export const { setDriverSearchText, openNewDriverDialog, closeNewDriverDialog, openEditDriverDialog } = driversSlice.actions;
 
-export default driverSlice.reducer;
+export default driversSlice.reducer;

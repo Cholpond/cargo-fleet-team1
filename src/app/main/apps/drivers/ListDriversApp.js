@@ -1,18 +1,20 @@
 
 import withReducer from 'app/store/withReducer';
 import DriversDialog from './driversDialog';
-import ListdriversAppContent from './ListDriversAppContent';
-import ListdriversAppHeader from './ListDriversAppHeader';
+import ListDriversAppContent from './ListDriversAppContent';
+import ListDriversAppHeader from './ListDriversAppHeader';
 import driversReducer from './store';
+import ListDriverAppCard from './ListDriversAppCard';
 
-function ListdriversApp() {
+function ListDriversApp() {
   return (
     <div>
-      <ListdriversAppHeader />
+      <ListDriversAppHeader />
       <DriversDialog />
-      <ListdriversAppContent />
+      <ListDriversAppContent />
+      <ListDriverAppCard />
     </div>
   );
 }
 
-export default withReducer('listdriversApp', driversReducer)(ListdriversApp);
+export default withReducer('listDriversApp', driversReducer)(ListDriversApp);

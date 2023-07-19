@@ -7,7 +7,7 @@ import Typography from '@material-ui/core/Typography';
 import Delete from '@material-ui/icons/Delete';
 import Edit from '@material-ui/icons/Edit';
 import { useDispatch } from 'react-redux';
-import { removedriver, openEditDriverDialog } from './store/driversSlice';
+import { removeDriver, openEditDriverDialog } from './store/driversSlice';
 
 const useStyles = makeStyles({
   root: {
@@ -43,7 +43,7 @@ const useStyles = makeStyles({
 });
 
 // 7 css framework material ui ready style
-function ListdriverAppCard({ driver }) {
+function ListDriversAppCard({ driver }) {
   const classes = useStyles();
   const dispatch = useDispatch();
   console.log(driver);
@@ -74,7 +74,7 @@ function ListdriverAppCard({ driver }) {
           <Typography variant="body2" component="p" >
             City: <span className={classes.info}> {driver.city}</span> 
           </Typography> 
-          <Delete onClick={() => dispatch(removedriver(driver.id))} className={classes.delete}/>
+          <Delete onClick={() => dispatch(removeDriver(driver.id))} className={classes.delete}/>
           <Edit onClick={handleEditClick} className={classes.edit}/>
         </div>
       </CardContent>
@@ -82,4 +82,4 @@ function ListdriverAppCard({ driver }) {
   );
 }
 
-export default ListdriverAppCard;
+export default ListDriversAppCard;

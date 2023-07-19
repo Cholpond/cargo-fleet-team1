@@ -1,7 +1,9 @@
 
 import { Button, makeStyles, Typography } from '@material-ui/core';
 import { useDispatch, useSelector } from 'react-redux';
-import { openNewDriverDialog, setdriverSearchText, openEditDriverDialog } from './store/driversSlice';
+import { openNewDriverDialog, setDriverSearchText, openEditDriverDialog } from './store/driversSlice';
+import { alpha } from '@material-ui/core/styles';
+
 
 const useStyles = makeStyles(() => ({
   search: {
@@ -22,7 +24,7 @@ const useStyles = makeStyles(() => ({
 function ListDriversSide() {
   const classes = useStyles();
   const dispatch = useDispatch();
-  const searchText = useSelector(store => store.listDriversApp.drivers.searchText);
+  const searchText = useSelector(store => store.ListDriversApp.driver.searchText);
   return (
     <div className={classes.search}>
       <Button onClick={() => dispatch(openNewDriverDialog())} variant="contained" color='secondary'>
@@ -33,7 +35,7 @@ function ListDriversSide() {
         placeholder="Search..."
         value={searchText}
         className={classes.inputSearch}
-        onChange={e => dispatch(setdriverSearchText(e))}
+        onChange={e => dispatch(setDriverSearchText(e))}
       />
     </div>
   );
