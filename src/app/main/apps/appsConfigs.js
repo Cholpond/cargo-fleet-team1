@@ -4,6 +4,7 @@ import ContactsAppConfig from './contacts/ContactsAppConfig';
 import ProjectDashboardAppConfig from './dashboard/ProjectDashboardAppConfig';
 import MailAppConfig from './mail/MailAppConfig';
 import ListIssuesConfigApp from './issues/ListIssuesConfigApp';
+import ListDriversConfigApp from './drivers/ListDriversConfigApp';
 
 
 
@@ -14,6 +15,8 @@ const appsConfigs = [
     ContactsAppConfig, 
     CalendarAppConfig, 
     ChatAppConfig, 
-    ListIssuesConfigApp];
+    ListIssuesConfigApp,
+    ListDriversConfigApp
+];
 
 export default appsConfigs;
