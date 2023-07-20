@@ -88,7 +88,8 @@
     "velocity-animate": "1.5.2",
     "velocity-react": "1.4.3",
     "web-vitals": "^0.2.4",
-    "yup": "^1.2.0"
+    "yup": "^1.2.0", 
+    "babel/plugin-proposal-private-property-in-object": "^7.21.11"
   },
   "peerDependencies": {
     "autoprefixer": "9.8.6",
@@ -138,7 +139,7 @@
     "build": "cross-env GENERATE_SOURCEMAP=false craco build",
     "test": "craco test --env=node",
     "eject": "craco eject",
-    "build-docs": "find ./src/app/main/documentation/material-ui-components \\( -name '*.ts' -o -name '*.tsx' \\) -type f -delete && babel-node --presets @babel/preset-env src/app/main/documentation/material-ui-components/build.js && babel-node --presets @babel/plugin-proposal-private-property-in-object src/app/main/documentation/material-ui-components/build.js",
+    "build-docs": "find ./src/app/main/documentation/material-ui-components \\( -name '*.ts' -o -name '*.tsx' \\) -type f -delete && babel-node --presets @babel/preset-env src/app/main/documentation/material-ui-components/build.js",
     "analyze": "craco build && source-map-explorer 'build/static/js/*.js' --html analyze-result.html",
     "pnpify-sdk": "yarn pnpify --sdk",
     "lint": "eslint",
