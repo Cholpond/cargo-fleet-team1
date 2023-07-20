@@ -5,7 +5,8 @@ databaseURL: "https://cargo-fleet-team-one-default-rtdb.firebaseio.com",
 projectId: "cargo-fleet-team-one",
 storageBucket: "cargo-fleet-team-one.appspot.com",
 messagingSenderId: "1088797512516",
-appId: "1:1088797512516:web:d72b6e7137f10950a53d11"};
+appId: "1:1088797512516:web:d72b6e7137f10950a53d11"
+};
 
 // Import the functions you need from the SDKs you need
 
@@ -25,7 +26,8 @@ const devConfig =  {
   projectId: "cargo-fleet-team-one",
   storageBucket: "cargo-fleet-team-one.appspot.com",
   messagingSenderId: "1088797512516",
-  appId: "1:1088797512516:web:d72b6e7137f10950a53d11"};
+  appId: "1:1088797512516:web:d72b6e7137f10950a53d11"
+};
 
 const config = process.env.NODE_ENV === 'production' ? prodConfig : devConfig;
 
