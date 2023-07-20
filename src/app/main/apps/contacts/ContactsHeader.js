@@ -1,5 +1,6 @@
 import Hidden from '@material-ui/core/Hidden';
 import Icon from '@material-ui/core/Icon';
+import { Button } from '@material-ui/core';
 import IconButton from '@material-ui/core/IconButton';
 import Input from '@material-ui/core/Input';
 import Paper from '@material-ui/core/Paper';
@@ -8,12 +9,24 @@ import Typography from '@material-ui/core/Typography';
 import { motion } from 'framer-motion';
 import { useDispatch, useSelector } from 'react-redux';
 import { selectMainTheme } from 'app/store/fuse/settingsSlice';
+import axios from 'axios';
+import { useState } from 'react';
+//import VehicleForm from 'extraUI/VehicleForm';
+import ContactsSidebarContent from './ContactsSidebarContent';
 import { setContactsSearchText } from './store/contactsSlice';
+
+const onFormSubmitHandler = () => {};
 
 function ContactsHeader(props) {
   const dispatch = useDispatch();
   const searchText = useSelector(({ contactsApp }) => contactsApp.contacts.searchText);
   const mainTheme = useSelector(selectMainTheme);
+
+  const [isVehicleForm, setIsVehicleForm] = useState(false);
+
+  function onAddVehicleHandler() {
+    setIsVehicleForm(true);
+  }
 
   return (
     <div className="flex flex-1 items-center justify-between p-4 sm:p-24">
@@ -45,12 +58,19 @@ function ContactsHeader(props) {
             delay={300}
             className="hidden sm:flex text-16 md:text-24 mx-12 font-semibold"
           >
-            Contacts
+            Vehicles
           </Typography>
         </div>
+
+        {/* <VehicleForm onClick={props.handleOpen} /> */}
+
+        {/* <Button variant="outlined" onClick={onAddVehicleHandler}>
+          +ADD
+        </Button> */}
       </div>
 
       <div className="flex flex-1 items-center justify-center px-8 sm:px-12">
+        <ContactsSidebarContent />
         <ThemeProvider theme={mainTheme}>
           <Paper
             component={motion.div}
@@ -74,6 +94,8 @@ function ContactsHeader(props) {
           </Paper>
         </ThemeProvider>
       </div>
+
+      {/* {isVehicleForm && <VehicleForm onFormSubmit={onFormSubmitHandler} setIsVehicleForm={setIsVehicleForm} />} */}
     </div>
   );
 }
