@@ -1,12 +1,11 @@
 const prodConfig = {
-  apiKey: "AIzaSyCTfmXdSTIDciaux7w1IvVdrRvDqkg_Yug",
-  authDomain: "cargo-fleet-test.firebaseapp.com",
-  databaseURL: "https://cargo-fleet-test-default-rtdb.firebaseio.com",
-  projectId: "cargo-fleet-test",
-  storageBucket: "cargo-fleet-test.appspot.com",
-  messagingSenderId: "316762921556",
-  appId: "1:316762921556:web:6deeb63c4b0f45669e6bc1"
-};
+apiKey: "AIzaSyC_kPY8LcomY5Buq0XKXjK4Aav_Bxmnyio",
+authDomain: "cargo-fleet-team-one.firebaseapp.com",
+databaseURL: "https://cargo-fleet-team-one-default-rtdb.firebaseio.com",
+projectId: "cargo-fleet-team-one",
+storageBucket: "cargo-fleet-team-one.appspot.com",
+messagingSenderId: "1088797512516",
+appId: "1:1088797512516:web:d72b6e7137f10950a53d11"};
 
 // Import the functions you need from the SDKs you need
 
@@ -19,15 +18,14 @@ const prodConfig = {
 // Initialize Firebase
 
 
-const devConfig = {
-  apiKey: "AIzaSyCTfmXdSTIDciaux7w1IvVdrRvDqkg_Yug",
-  authDomain: "cargo-fleet-test.firebaseapp.com",
-  databaseURL: "https://cargo-fleet-test-default-rtdb.firebaseio.com",
-  projectId: "cargo-fleet-test",
-  storageBucket: "cargo-fleet-test.appspot.com",
-  messagingSenderId: "316762921556",
-  appId: "1:316762921556:web:6deeb63c4b0f45669e6bc1"
-};
+const devConfig =  {
+  apiKey: "AIzaSyC_kPY8LcomY5Buq0XKXjK4Aav_Bxmnyio",
+  authDomain: "cargo-fleet-team-one.firebaseapp.com",
+  databaseURL: "https://cargo-fleet-team-one-default-rtdb.firebaseio.com",
+  projectId: "cargo-fleet-team-one",
+  storageBucket: "cargo-fleet-team-one.appspot.com",
+  messagingSenderId: "1088797512516",
+  appId: "1:1088797512516:web:d72b6e7137f10950a53d11"};
 
 const config = process.env.NODE_ENV === 'production' ? prodConfig : devConfig;
 
