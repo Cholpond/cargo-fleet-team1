@@ -1,117 +1,152 @@
 import { createSlice, createAsyncThunk, createEntityAdapter } from '@reduxjs/toolkit';
 import axios from 'axios';
 import { getUserData } from './userSlice';
+import { getContacts } from '../../chat/store/contactsSlice';
 
 export const getVehicles = createAsyncThunk(
-  'vehicle-list-app/vehicles/getContacts',
+  'vehicle-list-app/vehicles/getVehicles',
   async (routeParams, { getState }) => {
     routeParams = routeParams || getState().contactsApp.contacts.routeParams;
-    const response = await axios.get('/api/vehicle-list-app/vehicles', {
+    const response = await axios.get('https://cargofleet-api.fly.dev/team1/api/vehicles', {
       params: routeParams
     });
-    const data = await response.data;
+    const data = await response.data.data;
 
     return { data, routeParams };
   }
 );
 
-// export const addContact = createAsyncThunk(
-//   'contactsApp/contacts/addContact',
-//   async (contact, { dispatch, getState }) => {
-//     const response = await axios.post('/api/contacts-app/add-contact', { contact });
-//     const data = await response.data;
+export const addContact = createAsyncThunk(
+  'contactsApp/contacts/addContact',
+  async (contact, { dispatch, getState }) => {
+    console.log('contact', contact);
+    const response = await axios.post('https://cargofleet-api.fly.dev/team1/api/vehicles', contact);
 
-//     dispatch(getContacts());
+    const data = await response.data;
 
-//     return data;
-//   }
-// );
+    dispatch(getVehicles(1));
 
-// export const updateContact = createAsyncThunk(
-//   'contactsApp/contacts/updateContact',
-//   async (contact, { dispatch, getState }) => {
-//     const response = await axios.post('/api/contacts-app/update-contact', { contact });
-//     const data = await response.data;
+    return data;
+  }
+);
 
-//     dispatch(getContacts());
+export const updateContact = createAsyncThunk(
+  'contactsApp/contacts/updateContact',
+  async (contact, { dispatch, getState }) => {
+    const response = await axios.put(`https://cargofleet-api.fly.dev/team1/api/vehicles/${contact.id}`, contact);
+    // console.log('contact', contact);
+    const data = await response.data;
 
-//     return data;
-//   }
-// );
+    dispatch(getVehicles());
 
-// export const removeContact = createAsyncThunk(
-//   'contactsApp/contacts/removeContact',
-//   async (contactId, { dispatch, getState }) => {
-//     await axios.post('/api/contacts-app/remove-contact', { contactId });
+    return data;
+  }
+);
 
-//     return contactId;
-//   }
-// );
+export const removeContact = createAsyncThunk(
+  'contactsApp/contacts/removeContact',
+  async (contactId, { dispatch, getState }) => {
+    await axios.delete(`https://cargofleet-api.fly.dev/team1/api/vehicles/${contactId}`);
 
-// export const removeContacts = createAsyncThunk(
-//   'contactsApp/contacts/removeContacts',
-//   async (contactIds, { dispatch, getState }) => {
-//     await axios.post('/api/contacts-app/remove-contacts', { contactIds });
+    return contactId;
+  }
+);
 
-//     return contactIds;
-//   }
-// );
+export const removeContacts = createAsyncThunk(
+  'contactsApp/contacts/removeContacts',
+  async (contactIds, { dispatch, getState }) => {
+    await axios.post('/api/contacts-app/remove-contacts', { contactIds });
 
-// export const toggleStarredContact = createAsyncThunk(
-//   'contactsApp/contacts/toggleStarredContact',
-//   async (contactId, { dispatch, getState }) => {
-//     const response = await axios.post('/api/contacts-app/toggle-starred-contact', { contactId });
-//     const data = await response.data;
+    return contactIds;
+  }
+);
 
-//     dispatch(getUserData());
+export const toggleStarredContact = createAsyncThunk(
+  'contactsApp/contacts/toggleStarredContact',
+  async (contactId, { dispatch, getState }) => {
+    const response = await axios.post('/api/contacts-app/toggle-starred-contact', { contactId });
+    const data = await response.data;
 
-//     dispatch(getContacts());
+    dispatch(getUserData());
 
-//     return data;
-//   }
-// );
+    dispatch(getContacts());
 
-// export const toggleStarredContacts = createAsyncThunk(
-//   'contactsApp/contacts/toggleStarredContacts',
-//   async (contactIds, { dispatch, getState }) => {
-//     const response = await axios.post('/api/contacts-app/toggle-starred-contacts', { contactIds });
-//     const data = await response.data;
+    return data;
+  }
+);
 
-//     dispatch(getUserData());
+export const toggleStarredContacts = createAsyncThunk(
+  'contactsApp/contacts/toggleStarredContacts',
+  async (contactIds, { dispatch, getState }) => {
+    const response = await axios.post('/api/contacts-app/toggle-starred-contacts', { contactIds });
+    const data = await response.data;
 
-//     dispatch(getContacts());
+    dispatch(getUserData());
 
-//     return data;
-//   }
-// );
+    dispatch(getContacts());
 
-// export const setContactsStarred = createAsyncThunk(
-//   'contactsApp/contacts/setContactsStarred',
-//   async (contactIds, { dispatch, getState }) => {
-//     const response = await axios.post('/api/contacts-app/set-contacts-starred', { contactIds });
-//     const data = await response.data;
+    return data;
+  }
+);
 
-//     dispatch(getUserData());
+export const setContactsStarred = createAsyncThunk(
+  'contactsApp/contacts/setContactsStarred',
+  async (contactIds, { dispatch, getState }) => {
+    const response = await axios.post('/api/contacts-app/set-contacts-starred', { contactIds });
+    const data = await response.data;
 
-//     dispatch(getContacts());
+    dispatch(getUserData());
 
-//     return data;
-//   }
-// );
+    dispatch(getContacts());
 
-// export const setContactsUnstarred = createAsyncThunk(
-//   'contactsApp/contacts/setContactsUnstarred',
-//   async (contactIds, { dispatch, getState }) => {
-//     const response = await axios.post('/api/contacts-app/set-contacts-unstarred', { contactIds });
-//     const data = await response.data;
+    return data;
+  }
+);
 
-//     dispatch(getUserData());
+export const setContactsUnstarred = createAsyncThunk(
+  'contactsApp/contacts/setContactsUnstarred',
+  async (contactIds, { dispatch, getState }) => {
+    const response = await axios.post('/api/contacts-app/set-contacts-unstarred', { contactIds });
+    const data = await response.data;
 
-//     dispatch(getContacts());
+    dispatch(getUserData());
 
-//     return data;
-//   }
-// );
+    dispatch(getContacts());
+
+    return data;
+  }
+); 
+
+//7 reguest data to send to server for assign/unassign drivers
+export const setAssignDriver = createAsyncThunk(
+  'contactsApp/contacts/setAssign',
+  async (object, { dispatch, getState }) => {
+    const response = await axios.post(`https://cargofleet-api.fly.dev/team1/api/vehicles/${object.id}/assign`, object.assign);
+    const data = await response.data;
+
+    dispatch(getUserData());
+
+    dispatch(getVehicles());
+    dispatch(getContacts());
+
+    return data;
+  }
+);
+export const setUnAssignDriver = createAsyncThunk(
+  'contactsApp/contacts/setAssign',
+  async (object, { dispatch, getState }) => {
+    const response = await axios.post(`https://cargofleet-api.fly.dev/team1/api/vehicles/${object.id}/unassign`, object.assign);
+    const data = await response.data;
+
+    dispatch(getUserData());
+    dispatch(getVehicles());
+    dispatch(getContacts());
+
+    return data;
+  }
+);
+
+
 
 const contactsAdapter = createEntityAdapter({});
 
@@ -130,11 +165,58 @@ const contactsSlice = createSlice({
         open: false
       },
       data: null
+    }, 
+
+    //2 add initally state for assignDialog/unassignDialog
+    assignDialog: {
+      type: 'assign',
+      props: {
+        open: false
+      },
+      data: null
     }
   }),
   reducers: {
+    //1 create open and close assign and unassign
+    openAssignDialog: (state, action) => {
+      state.assignDialog = {
+        type: 'assign',
+        props: {
+          open: true
+        },
+        data: action.payload
+      };
+    },
+    closeAssignDialog: (state, action) => {
+      state.assignDialog = {
+        type: 'assign',
+        props: {
+          open: false
+        },
+        data: null
+      };
+    },
+    openUnassignDialog: (state, action) => {
+      state.assignDialog = {
+        type: 'unassign',
+        props: {
+          open: true
+        },
+        data: action.payload
+      };
+    },
+    closeUnassignDialog: (state, action) => {
+      state.assignDialog = {
+        type: 'unassign',
+        props: {
+          open: false
+        },
+        data: null
+      };
+    },
     setContactsSearchText: {
       reducer: (state, action) => {
+
         state.searchText = action.payload;
       },
       prepare: event => ({ payload: event.target.value || '' })
@@ -177,10 +259,12 @@ const contactsSlice = createSlice({
     }
   },
   extraReducers: {
-    // [updateContact.fulfilled]: contactsAdapter.upsertOne,
-    // [addContact.fulfilled]: contactsAdapter.addOne,
-    // [removeContacts.fulfilled]: (state, action) => contactsAdapter.removeMany(state, action.payload),
-    // [removeContact.fulfilled]: (state, action) => contactsAdapter.removeOne(state, action.payload),
+    [updateContact.fulfilled]: contactsAdapter.upsertOne,
+    [addContact.fulfilled]: contactsAdapter.addOne,
+    [removeContacts.fulfilled]: (state, action) => contactsAdapter.removeMany(state, action.payload),
+    [removeContact.fulfilled]: (state, action) => contactsAdapter.removeOne(state, action.payload),
+    [setAssignDriver.fulfilled]: contactsAdapter.addOne,
+    [setUnAssignDriver.fulfilled]: contactsAdapter.addOne,
     [getVehicles.fulfilled]: (state, action) => {
       const { data, routeParams } = action.payload;
       contactsAdapter.setAll(state, data);
@@ -190,12 +274,20 @@ const contactsSlice = createSlice({
   }
 });
 
+//3
 export const {
   setContactsSearchText,
   openNewContactDialog,
   closeNewContactDialog,
   openEditContactDialog,
-  closeEditContactDialog
+  closeEditContactDialog,
+  openAssignDialog,
+  closeAssignDialog,
+  openUnassignDialog,
+  closeUnassignDialog
 } = contactsSlice.actions;
 
+
+
 export default contactsSlice.reducer;
+

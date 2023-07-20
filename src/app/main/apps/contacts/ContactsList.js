@@ -8,8 +8,7 @@ import { useMemo, useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import ContactsMultiSelectMenu from './ContactsMultiSelectMenu';
 import ContactsTable from './ContactsTable';
-// import { openEditContactDialog, removeContact, toggleStarredContact, selectContacts } from './store/contactsSlice';
-import { openEditContactDialog, selectContacts } from './store/contactsSlice';
+import { openEditContactDialog, removeContact, toggleStarredContact, selectContacts } from './store/contactsSlice';
 
 const formatData = vehicles =>
   vehicles.map(vehicle => {
@@ -17,8 +16,8 @@ const formatData = vehicles =>
     return {
       ...vehicle,
       isAssigned: vehicle.isAssigned ? 'YES' : 'NO',
-      totalCost,
-      millage: vehicle.millage.toLocaleString()
+      totalCost
+      // millage: vehicle.millage.toLocaleString()
     };
   });
 
@@ -47,78 +46,97 @@ function ContactsList(props) {
       //   sortable: false
       // },
       {
-        Header: 'Brand',
+        Header: 'Assignment',
+        accessor: 'active',
+        sortable: true
+      },
+      {
+        Header: 'Vehicle Brand',
         accessor: 'brand',
         className: 'font-medium',
         sortable: true
       },
       {
-        Header: 'Model',
+        Header: ' Vehicle Model',
         accessor: 'model',
         className: 'font-medium',
         sortable: true
       },
       // TODO: add Production Year
-      // {
-      //   Header: 'Production Year',
-      //   accessor: 'year',
-      //   sortable: true
-      // },
+      {
+        Header: 'Production Year',
+
+        accessor: 'manufacture_year',
+
+        sortable: true
+      },
       {
         Header: 'Plate Number',
-        accessor: 'plateNumber',
+        accessor: 'plate_number',
+        sortable: true
+      },
+
+      {
+        Header: 'Driver name',
+        accessor: 'driver.first_name',
         sortable: true
       },
       {
-        Header: 'Assigned Status',
-        accessor: 'isAssigned',
+        Header: 'Driver last name',
+        accessor: 'driver.last_name',
         sortable: true
       },
-      {
-        Header: 'Vehicle Status',
-        accessor: 'vehicleStatus',
-        sortable: true
-      },
-      {
-        Header: 'Total Cost',
-        accessor: 'totalCost',
-        sortable: true
-      },
-      {
-        Header: 'Millage',
-        accessor: 'millage',
-        sortable: true
-      }
 
       // {
-      //   id: 'action',
-      //   width: 128,
-      //   sortable: false,
-      //   Cell: ({ row }) => (
-      //     <div className="flex items-center">
-      //       <IconButton
-      //         onClick={ev => {
-      //           ev.stopPropagation();
-      //           dispatch(toggleStarredContact(row.original.id));
-      //         }}
-      //       >
-      //         {user.starred && user.starred.includes(row.original.id) ? (
-      //           <Icon className="text-yellow-700">star</Icon>
-      //         ) : (
-      //           <Icon>star_border</Icon>
-      //         )}
-      //       </IconButton>
-      //       {/* <IconButton
-      //         onClick={ev => {
-      //           ev.stopPropagation();
-      //           dispatch(removeContact(row.original.id));
-      //         }}
-      //       >
-      //         <Icon>delete</Icon>
-      //       </IconButton> */}
-      //     </div>
-      //   )
-      // }
+      //   Header: 'Actions'
+      //   accessor: 'active',
+      //   sortable: true
+      // },
+      // {
+      //   Header: 'Vehicle Status',
+      //   accessor: 'vehicleStatus',
+      //   sortable: true
+      // },
+      // {
+      //   Header: 'Total Cost',
+      //   accessor: 'totalCost',
+      //   sortable: true
+      // },
+      // {
+      //   Header: 'Millage',
+      //   accessor: 'millage',
+      //   sortable: true
+      // },
+
+      {
+        id: 'action',
+        width: 128,
+        sortable: false,
+        Cell: ({ row }) => (
+          <div className="flex items-center">
+            <IconButton
+              onClick={ev => {
+                ev.stopPropagation();
+                dispatch(toggleStarredContact(row.original.id));
+              }}
+            >
+              {/* {user.starred && user.starred.includes(row.original.id) ? (
+                <Icon className="text-yellow-700">star</Icon>
+              ) : (
+                <Icon>star_border</Icon>
+              )} */}
+            </IconButton>
+            {/* <IconButton
+              onClick={ev => {
+                ev.stopPropagation();
+                dispatch(removeContact(row.original.id));
+              }}
+            >
+              <Icon>delete</Icon>
+            </IconButton> */}
+          </div>
+        )
+      }
     ],
     // eslint-disable-next-line
     [dispatch, contacts]
@@ -136,7 +154,6 @@ function ContactsList(props) {
       setFilteredData(getFilteredArray(contacts, searchText));
     }
   }, [contacts, searchText]);
-
   if (!filteredData) {
     return null;
   }
@@ -151,18 +168,17 @@ function ContactsList(props) {
     );
   }
 
-  const formattedData = formatData(filteredData);
-
   return (
     <motion.div initial={{ y: 20, opacity: 0 }} animate={{ y: 0, opacity: 1, transition: { delay: 0.2 } }}>
       <ContactsTable
         columns={columns}
-        data={formattedData}
-        // onRowClick={(ev, row) => {
-        //   if (row) {
-        //     dispatch(openEditContactDialog(row.original));
-        //   }
-        // }}
+        data={filteredData}
+        onRowClick={(ev, row) => {
+          console.log('clicked vehicle');
+          if (row) {
+            dispatch(openEditContactDialog(row.original));
+          }
+        }}
       />
     </motion.div>
   );

@@ -2,7 +2,7 @@ import { createSlice, createAsyncThunk } from '@reduxjs/toolkit';
 import axios from 'axios';
 
 export const getUserData = createAsyncThunk('contactsApp/user/getUserData', async () => {
-  const response = await axios.get('/api/contacts-app/user');
+  const response = await axios.get('https://cargofleet-api.fly.dev/team1/api/vehicles');
   const data = await response.data;
   return data;
 });

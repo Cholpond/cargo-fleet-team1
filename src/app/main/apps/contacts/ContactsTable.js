@@ -1,8 +1,11 @@
 import { forwardRef, useRef, useEffect } from 'react';
+import { useDispatch } from 'react-redux';
 import Checkbox from '@material-ui/core/Checkbox';
 import Table from '@material-ui/core/Table';
 import PropTypes from 'prop-types';
 import TableBody from '@material-ui/core/TableBody';
+import Button from '@material-ui/core/IconButton';
+import Typography from '@material-ui/core/Typography';
 import TableCell from '@material-ui/core/TableCell';
 import TableContainer from '@material-ui/core/TableContainer';
 import TableHead from '@material-ui/core/TableHead';
@@ -12,6 +15,7 @@ import TableSortLabel from '@material-ui/core/TableSortLabel';
 import { useGlobalFilter, usePagination, useRowSelect, useSortBy, useTable } from 'react-table';
 import clsx from 'clsx';
 import ContactsTablePaginationActions from './ContactsTablePaginationActions';
+import { openAssignDialog, openNewContactDialog, openUnassignDialog } from './store/contactsSlice';
 
 const IndeterminateCheckbox = forwardRef(({ indeterminate, ...rest }, ref) => {
   const defaultRef = useRef();
@@ -28,7 +32,17 @@ const IndeterminateCheckbox = forwardRef(({ indeterminate, ...rest }, ref) => {
   );
 });
 
+const assignButtonStyles = {
+  borderRadius: '10px',
+  padding: '7px',
+  fontSize: 'inherit',
+  backgroundColor: '#FEBE2C',
+  color: 'black',
+  width: '90px'
+};
+
 const EnhancedTable = ({ columns, data, onRowClick }) => {
+  console.log('columns', columns);
   const {
     getTableProps,
     headerGroups,
@@ -76,6 +90,18 @@ const EnhancedTable = ({ columns, data, onRowClick }) => {
       ]);
     }
   );
+  const dispatch = useDispatch();
+
+  //5 create function to open dialog assignDialog/unassignDialog
+  const assignHandler = (e, id) => {
+    e.stopPropagation();
+    dispatch(openAssignDialog(id));
+  };
+
+  const unassignHandler = (e, id) => {
+    e.stopPropagation();
+    dispatch(openUnassignDialog(id));
+  };
 
   const handleChangePage = (event, newPage) => {
     gotoPage(newPage);
@@ -84,7 +110,7 @@ const EnhancedTable = ({ columns, data, onRowClick }) => {
   const handleChangeRowsPerPage = event => {
     setPageSize(Number(event.target.value));
   };
-
+  console.log('page', page);
   // Render the UI for your table
   return (
     <div className="flex flex-col min-h-full sm:border-1 sm:rounded-16 overflow-hidden">
@@ -123,6 +149,38 @@ const EnhancedTable = ({ columns, data, onRowClick }) => {
                   className="truncate cursor-pointer"
                 >
                   {row.cells.map(cell => {
+                    // console.log(cell, 'cell');
+
+                    //4 to change assign/unassign button on vehacle table
+                    if (cell.column.Header === 'Assignment') {
+                      const value = !row.original?.driver ? (
+                        <Button
+                          style={assignButtonStyles}
+                          variant="primary"
+                          color="secondary"
+                          onClick={e => assignHandler(e, row.original)}
+                        >
+                          {' '}
+                          Assign
+                        </Button>
+                      ) : (
+                        <Button
+                          variant="contained"
+                          color="secondary"
+                          style={{ ...assignButtonStyles, ...{ backgroundColor: '#006565', color: 'white' } }}
+                          onClick={e => unassignHandler(e, row.original)}
+                        >
+                          {' '}
+                          Unassign
+                        </Button>
+                      );
+                      return (
+                        <TableCell {...cell.getCellProps()} className={clsx('p-4 md:p-12', cell.column.className)}>
+                          {cell.render('Cell')}
+                          {value}
+                        </TableCell>
+                      );
+                    }
                     return (
                       <TableCell {...cell.getCellProps()} className={clsx('p-4 md:p-12', cell.column.className)}>
                         {cell.render('Cell')}

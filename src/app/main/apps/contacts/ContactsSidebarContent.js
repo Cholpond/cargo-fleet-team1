@@ -48,32 +48,34 @@ function ContactsSidebarContent(props) {
   const classes = useStyles(props);
 
   return (
-    <div className="p-0 lg:p-24 lg:ltr:pr-4 lg:rtl:pl-4">
-      <Paper
+    <>
+      {/* // <div className="p-0 lg:p-24 lg:ltr:pr-4 lg:rtl:pl-4"> */}
+      {/* <Paper
         component={motion.div}
         initial={{ y: 20, opacity: 0 }}
         animate={{ y: 0, opacity: 1, transition: { delay: 0.2 } }}
         className="rounded-0 shadow-none lg:rounded-16 lg:shadow"
-      >
-        <div className="p-24 flex items-center">
+      > */}
+      {/* <div className="p-24 flex items-center">
           <Avatar alt={user.name} src={user.avatar} />
           <Typography className="mx-12">{user.name}</Typography>
-        </div>
+        </div> */}
 
-        <Divider />
+      {/* <Divider /> */}
 
-        <div className="p-24">
-          <Button
-            variant="contained"
-            color="secondary"
-            className="w-full"
-            onClick={ev => dispatch(openNewContactDialog())}
-          >
-            New Contact
-          </Button>
-        </div>
+      {/* <div className="p-24"> */}
+      <Button
+        style={{ width: 'auto', margin: 'auto' }}
+        variant="contained"
+        color="secondary"
+        onClick={ev => dispatch(openNewContactDialog())}
+      >
+        {' '}
+        <Typography variant="h6">Add New Vehicle</Typography>
+      </Button>
+      {/* </div> */}
 
-        <List className="pt-0 px-12">
+      {/* <List className="pt-0 px-12">
           <ListItem
             button
             component={NavLinkAdapter}
@@ -97,8 +99,8 @@ function ContactsSidebarContent(props) {
               restore
             </Icon>
             <ListItemText className="truncate" primary="Frequently contacted" disableTypography />
-          </ListItem>
-          <ListItem
+          </ListItem> */}
+      {/* <ListItem
             button
             component={NavLinkAdapter}
             to="/apps/contacts/starred"
@@ -109,10 +111,11 @@ function ContactsSidebarContent(props) {
               star
             </Icon>
             <ListItemText className="truncate" primary="Starred contacts" disableTypography />
-          </ListItem>
-        </List>
-      </Paper>
-    </div>
+          </ListItem> */}
+      {/* </List> */}
+      {/* </Paper> */}
+      {/* // </div> */}
+    </>
   );
 }
 
