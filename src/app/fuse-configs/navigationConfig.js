@@ -58,6 +58,14 @@ const navigationConfig = [
         type: 'item',
         icon: 'announcement',
         url: '/apps/issues/all'
+      },
+      {
+        id: 'drivers',
+        title: 'Drivers',
+        translate: 'DRIVERS',
+        type: 'item',
+        icon: 'account_box',
+        url: '/apps/drivers'
       }
 
       // {
