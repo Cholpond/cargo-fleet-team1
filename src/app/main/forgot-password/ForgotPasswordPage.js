@@ -53,7 +53,7 @@ function ForgotPasswordPage() {
     } catch (error) {
       if (error.code === 'auth/user-not-found') {
         alert('User not found, try again!');
-        setEmail('');
+        // setEmail('');
       }
     }
   };
