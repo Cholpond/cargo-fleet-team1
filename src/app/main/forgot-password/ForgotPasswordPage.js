@@ -31,7 +31,7 @@ const defaultValues = {
 };
 
 function ForgotPasswordPage() {
-  const [email, setEmail] = useState('');
+  // const [email, setEmail] = useState('');
   const [emailMessage, setEmailMessage] = useState(false);
   const classes = useStyles();
   const { control, formState, handleSubmit, reset } = useForm({
@@ -46,7 +46,7 @@ function ForgotPasswordPage() {
   //   reset(defaultValues);
   // }
 
-  const onSubmit = async ({ email }) => {
+  const onSubmit = async ( {email} ) => {
     try {
       await firebaseService.passwordReset(email);
       setEmailMessage(true);
